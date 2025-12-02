@@ -5,107 +5,106 @@
 [![PyPI](https://img.shields.io/pypi/v/fluidsimfoam)](https://pypi.org/project/fluidsimfoam/)
 [![Documentation Status](https://readthedocs.org/projects/fluidsimfoam/badge/?version=latest)](https://fluidsimfoam.readthedocs.io/en/latest/?badge=latest)
 
-Python framework for [OpenFOAM]
+**A Python framework for [OpenFOAM]**
 
 </div>
 
 <!-- start-intro -->
 
-[OpenFOAM] is a very popular open-source C++ [CFD] framework. With
-Fluidsimfoam, we try to **design and propose a new workflow for OpenFOAM
-based on Python**. However, experienced OpenFOAM users won't be lost because
-Fluidsimfoam produces in the end standard OpenFOAM cases and it's always
-possible to come back to the standard OpenFOAM workflow.
+[OpenFOAM] is a highly popular open-source C++ [CFD] framework. With
+Fluidsimfoam, we **design and propose a new Python-based workflow for OpenFOAM**.
+Experienced OpenFOAM users will feel at home: Fluidsimfoam produces standard
+OpenFOAM cases in the end, and it's always possible to return to the traditional
+OpenFOAM workflow.
 
-Fluidsimfoam can be seen as a workflow manager for OpenFOAM or a Python
-wrapper around OpenFOAM. It only uses OpenFOAM commands on the background
-and is thus NOT a rewrite of OpenFOAM!
+Fluidsimfoam serves as a workflow manager and Python wrapper for OpenFOAM. It
+exclusively uses OpenFOAM commands in the background and is **NOT a rewrite of
+OpenFOAM**!
 
-Fluidsimfoam should be especially useful for:
+## Key Use Cases
 
-- automatisation of simulation launching for example for parametric studies or optimization,
-- programmatic generation of complex and parametrized input files (for example `blockMeshDict`) and initial conditions,
-- programmatic control of a simulation at runtime (an example
-  [here](https://foss.heptapod.net/fluiddyn/fluidsimfoam/-/tree/branch/default/doc/examples/scripts/2023sed-parametric)).
+Fluidsimfoam is especially valuable for:
 
-However, Fluidsimfoam is not restricted to these usages and should be
-convenient, especially for people knowing Python, for any OpenFOAM usages for
-which C++ programming is not needed.
+- **Automation** - Launch simulations for parametric studies and optimization workflows
+- **Programmatic generation** - Create complex, parameterized input files (e.g., `blockMeshDict`) and initial conditions
+- **Runtime control** - Programmatically manage simulations during execution ([example](https://foss.heptapod.net/fluiddyn/fluidsimfoam/-/tree/branch/default/doc/examples/scripts/2023sed-parametric))
 
-Working with OpenFOAM implies writting and modifying a lot of input files
-describing a simulation. The method described in the official OpenFOAM
-documentations is to copy an existing simulation directory and to modify the
-input files by hand.
+Beyond these use cases, Fluidsimfoam is convenient for Python users tackling any
+OpenFOAM workflow that doesn't require C++ programming.
 
-With Fluidsimfoam, we introduce the possibility to describe not only one case
-(as shown in the [OpenFOAM tutorials]), but sets of similar simulations. The
-description of one set of simulations is done in Python (and possibly with
-[Jinja] templates) in a small Python package that we call a "[Fluidsim] solver".
+## Why Fluidsimfoam?
 
-```{warning}
+Working with OpenFOAM typically involves writing and modifying numerous input files
+to describe a simulation. The standard approach, as outlined in the official OpenFOAM
+documentation, is to copy an existing simulation directory and manually edit the
+input files.
 
-"[Fluidsim] solver" and "OpenFOAM solvers" are very different things. A
-Fluidsim solver is a small Python package describing a set of simulations.
-Fluidsimfoam allows one to write Fluidsim solvers based for the simulations
-on OpenFOAM.
+With Fluidsimfoam, you can describe not just individual cases (as in the
+[OpenFOAM tutorials]), but **entire sets of similar simulations**. These
+simulation sets are defined in Python (optionally using [Jinja] templates)
+within small Python packages we call "[Fluidsim] solvers".
 
-```
+> **Note:** A "[Fluidsim] solver" and an "OpenFOAM solver" are fundamentally different.
+> A Fluidsim solver is a Python package that describes a set of simulations, while
+> Fluidsimfoam enables you to create Fluidsim solvers that run on OpenFOAM.
 
-As shown in [our tutorials], with a Fluidsimfoam solver, it becomes very easy to
+As demonstrated in [our tutorials], Fluidsimfoam solvers make it simple to:
 
-- launch/restart simulations with Python scripts and terminal commands,
-- load simulations, read the associated parameters/data and produce nice figures/movies.
+- Launch and restart simulations using Python scripts or terminal commands
+- Load simulations, read parameters and data, and generate figures or movies
 
-There are open-source solvers (some of them [are included in our main
-repository](https://foss.heptapod.net/fluiddyn/fluidsimfoam/-/tree/branch/default/doc/examples))
-and it is not be difficult to write your own solver based on your OpenFOAM
-cases. For example, to produce a solver from an existing case, one can run
+Several open-source solvers [are included in our repository](https://foss.heptapod.net/fluiddyn/fluidsimfoam/-/tree/branch/default/doc/examples),
+and creating your own solver from existing OpenFOAM cases is straightforward.
+For example, to generate a solver from an existing case, run:
 
 ```sh
 fluidsimfoam-initiate-solver cylinder -c $FOAM_TUTORIALS/basic/potentialFoam/cylinder
 ```
 
-This command creates a solver `fluidsimfoam-cylinder` that can be used to run
-the simulation described in the [Flow around a
-cylinder](https://www.openfoam.com/documentation/tutorial-guide/2-incompressible-flow/2.2-flow-around-a-cylinder)
-tutorial. But this solver can very easily be improved to be parametrized and to
-produce some input files programmatically. For example, the mesh of this
-tutorial is produced with the `blockMesh` OpenFOAM utility and the
-`blockMeshDict` is quite complex and contains a `#codeStream` directive (which
-implies writting C++ and compilations). With Fluidsimfoam, you can avoid this
-step and produce the `blockMeshDict` programmatically with a nice Python API
-and a nice mechanism to add and store parameters.
+This command creates a `fluidsimfoam-cylinder` solver for running the
+[Flow around a cylinder](https://www.openfoam.com/documentation/tutorial-guide/2-incompressible-flow/2.2-flow-around-a-cylinder)
+tutorial. This solver can be easily enhanced to support parameterization and
+programmatic file generation. For instance, the tutorial's mesh is generated using
+the `blockMesh` utility with a complex `blockMeshDict` containing `#codeStream`
+directives (requiring C++ code and compilation). **With Fluidsimfoam, you can skip
+this step** and generate the `blockMeshDict` programmatically using an elegant
+Python API with built-in parameter management.
 
-The best way to use Fluidsimfoam is to write or use a solver adapted for your
-particular use case. However, one can also use Python functions and classes
-provided by Fluidsimfoam for some common tasks, like parsing/writting input
-files, modifying field files, writting `blockMeshDict` files, etc.
+## Usage Patterns
 
-Fluidsimfoam is now usable but still in quite early development. There are
-still very low hangling fruits not yet implemented (for example, [restart
-utilities](https://foss.heptapod.net/fluiddyn/fluidsimfoam/-/issues/40),
-[production of figures and
-movies](https://foss.heptapod.net/fluiddyn/fluidsimfoam/-/issues/38), etc.) and
-our documentation does not reflect what people can and will be able to do with
-this tool. One goal is to get the equivalent of [Snek5000], our Fluidsim
-framework for the [CFD] code [Nek5000]. Looking at the [Snek5000] tutorials
-should give a good idea of what Fluidsimfoam will soon allow.
+The recommended approach is to create or use a solver tailored to your specific
+use case. Alternatively, you can leverage Fluidsimfoam's Python functions and
+classes for common tasks such as:
 
-```{admonition} Contributing
+- Parsing and writing input files
+- Modifying field files
+- Generating `blockMeshDict` files
+- And more...
 
-This project is young and we need any kind of feedback and [contributions].
-Don't be afraid that the project is not hosted on Github. If you think that
-this project is interesting please *star* [our repository on
-Heptapod](https://foss.heptapod.net/fluiddyn/fluidsimfoam) and/or [open
-issues](https://foss.heptapod.net/fluiddyn/fluidsimfoam/-/issues) with
-feedback, feature requests or bug reports. Moreover, we would be very happy to
-welcome new core developers, so if you like OpenFOAM and Python, do not
-hesitate!
+## Project Status
 
-```
+Fluidsimfoam is **functional and ready for use**, though still in active early
+development. Some features remain to be implemented, such as
+[restart utilities](https://foss.heptapod.net/fluiddyn/fluidsimfoam/-/issues/40)
+and [automated figure/movie generation](https://foss.heptapod.net/fluiddyn/fluidsimfoam/-/issues/38).
+Our documentation is evolving to better showcase the tool's full capabilities.
 
-For our examples, we currently target OpenFOAM v2206 but it should be possible
-to write Fluidsimfoam solvers targeting any recent OpenFOAM versions.
+Our goal is to achieve feature parity with [Snek5000], our Fluidsim framework for
+[Nek5000]. The [Snek5000] tutorials offer a preview of Fluidsimfoam's future
+capabilities.
+
+**Current target:** OpenFOAM v2206, though Fluidsimfoam solvers should work with
+most recent OpenFOAM versions.
+
+## Contributing
+
+This is a **young project** and we welcome all forms of feedback and [contributions]!
+Don't let the fact that we're not on GitHub stop you. If you find this project
+interesting:
+
+- ⭐ **Star** [our repository on Heptapod](https://foss.heptapod.net/fluiddyn/fluidsimfoam)
+- 🐛 **Open issues** for [feedback, feature requests, or bug reports](https://foss.heptapod.net/fluiddyn/fluidsimfoam/-/issues)
+- 👥 **Join as a core developer** - if you're passionate about OpenFOAM and Python, we'd love to have you!
 
 [fluiddyn]: https://fluiddyn.readthedocs.io
 [fluidsim]: https://fluidsim.readthedocs.io
@@ -123,15 +122,22 @@ to write Fluidsimfoam solvers targeting any recent OpenFOAM versions.
 
 See more in [Fluidsimfoam documentation](https://fluidsimfoam.readthedocs.org).
 
-## Install
+## Installation
 
 <!-- start-install -->
 
-Currently, it still makes sense to install Fluidsimfoam like we, the
-fluidsimfoam developers, install it, i.e. in a dedicated controlled virtual
-environment created by [PDM]. After installing [PDM] (for example with
-something like `pipx install pdm`), the following commands should install and
-activate the virtual environment:
+### For Users
+
+Install from PyPI:
+
+```sh
+pip install fluidsimfoam
+```
+
+### For Developers
+
+We recommend installing Fluidsimfoam in a dedicated virtual environment using
+[PDM]. First, install [PDM] (e.g., `pipx install pdm`), then run:
 
 ```sh
 hg clone https://foss.heptapod.net/fluiddyn/fluidsimfoam
@@ -140,22 +146,27 @@ pdm install
 pdm venv activate
 ```
 
+Alternatively, for an editable installation:
+
+```sh
+pip install -e .
+```
+
 [pdm]: https://pdm-project.org
 
 <!-- end-install -->
 
-## Related projects
+## Related Projects
 
-- [Fluidfoam] Another [Fluiddyn] package (like Fluidsimfoam) to use/plot OpenFOAM
-  data. Will be used by Fluidsimfoam.
+- **[Fluidfoam]** - Another [Fluiddyn] package for reading and plotting OpenFOAM
+  data. Will be integrated with Fluidsimfoam.
 
-- [PyFoam] ([PyPI package](https://pypi.org/project/PyFoam/),
-  [hg repo](http://hg.code.sf.net/p/openfoam-extend/PyFoam)) Python utilities for
-  OpenFOAM. GNU GPL. Still maintained.
+- **[PyFoam]** - Python utilities for OpenFOAM ([PyPI](https://pypi.org/project/PyFoam/),
+  [repo](http://hg.code.sf.net/p/openfoam-extend/PyFoam)). GNU GPL licensed, actively maintained.
 
-- [PythonFlu] ([wiki](https://openfoamwiki.net/index.php/Contrib_pythonFlu))
+- **[PythonFlu]** - Python bindings for OpenFOAM ([wiki](https://openfoamwiki.net/index.php/Contrib_pythonFlu))
 
-- [Swak4Foam] Popular set of utilities for OpenFOAM. Can be used in
+- **[Swak4Foam]** - Popular utility collection for OpenFOAM, compatible with
   Fluidsimfoam solvers.
 
 [PyFoam]: https://openfoamwiki.net/index.php/Contrib/PyFoam
