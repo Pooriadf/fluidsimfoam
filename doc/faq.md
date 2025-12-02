@@ -38,8 +38,13 @@ Both tools are complementary and can be used together.
 # For users
 pip install fluidsimfoam
 
-# For developers
-git clone https://github.com/YourUsername/fluidsimfoam
+# For developers (from GitHub fork)
+git clone https://github.com/pooriadf/fluidsimfoam
+cd fluidsimfoam
+pip install -e .
+
+# Or from official Heptapod repository
+hg clone https://foss.heptapod.net/fluiddyn/fluidsimfoam
 cd fluidsimfoam
 pip install -e .
 ```
@@ -463,7 +468,9 @@ Open an issue on [Heptapod](https://foss.heptapod.net/fluiddyn/fluidsimfoam/-/is
 
 ### Can I use GitHub instead of Heptapod?
 
-The official repository is on Heptapod (Mercurial). If you're more comfortable with Git/GitHub, the maintainers can help set up mirroring for contributions.
+The official repository is on [Heptapod](https://foss.heptapod.net/fluiddyn/fluidsimfoam) (Mercurial). 
+
+A GitHub mirror/fork is available at [github.com/pooriadf/fluidsimfoam](https://github.com/pooriadf/fluidsimfoam) for those who prefer Git workflows.
 
 ## License & Citation
 
