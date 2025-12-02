@@ -1,9 +1,12 @@
-# Fluidsimfoam documentation
+# Fluidsimfoam Documentation
 
-Fluidsimfoam is a Python package and a thin interface over [OpenFOAM]. It provides a
-framework to (i) describe in Python sets of similar simulations, (ii) organize
-parameters, (iii) launch/restart multiple simulations and (iv) load simulations to read
-the associated parameters/data and produce nice figures/movies.
+Fluidsimfoam is a Python framework for [OpenFOAM] that enables modern, Python-based workflows for CFD simulations. It provides tools to:
+
+- **Describe** sets of similar simulations in Python
+- **Organize** parameters hierarchically and reproducibly
+- **Generate** OpenFOAM input files programmatically
+- **Launch** and restart simulations with simple commands
+- **Analyze** results and produce figures/movies
 
 ```{list-table}
 * - Repository
@@ -11,23 +14,42 @@ the associated parameters/data and produce nice figures/movies.
 
 * - Version
   - [{{ release}}](https://pypi.org/project/fluidsimfoam/)
+
+* - License
+  - BSD-3-Clause
 ```
+
+## Getting Started
+
+New to Fluidsimfoam? Start here:
+
+1. [Introduction](intro.md) - What is Fluidsimfoam and why use it?
+2. [Installation](install.md) - Get Fluidsimfoam up and running
+3. [Quick Start](quickstart.md) - Create your first simulation in minutes
+4. [Tutorials](tutorials.md) - Step-by-step examples
+
+## User Guide
 
 ```{toctree}
 ---
-caption: User guide
-maxdepth: 1
+caption: User Guide
+maxdepth: 2
 ---
 intro
 install
+quickstart
 tutorials
+architecture
+best_practices
+faq
 ```
 
 ```{toctree}
 ---
 caption: Python API
-maxdepth: 1
+maxdepth: 2
 ---
+api_examples
 autosum.rst
 ```
 
