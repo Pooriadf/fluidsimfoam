@@ -1,0 +1,375 @@
+FoamFile
+{
+    version         2;
+    format          ascii;
+    class           dictionary;
+    object          snappyHexMeshDict;
+}
+
+// Exported by SnappyHexMesh GUI add-on for Blender v1.8
+// Source file: F:\Pooria\Combustion\Simulation\Geometry\for_openfoam\01dec\allparts_surfaces.blend
+// Export date: 2025-12-01 16:31:03.041138
+
+// Details about SnappyHexMesh parameters can be found in annotated caseDicts:
+// - For openfoam.org (development version), see
+//   https://github.com/OpenFOAM/OpenFOAM-dev/blob/master/etc/caseDicts/annotated/snappyHexMeshDict
+// - For openfoam.com (development version), see
+//   https://develop.openfoam.com/Development/openfoam/-/blob/master/etc/caseDicts/annotated/snappyHexMeshDict
+// See also links in https://openfoamwiki.net/index.php/SnappyHexMesh
+
+// type            castellatedBufferLayer; // OpenFOAM.com v2412 option to enable buffer layer. Warning: Experimental feature!
+
+castellatedMesh true;
+snap            true;
+addLayers       false;
+
+mergePatchFaces false;  // Avoid face merging to increase layer coverage
+
+geometry
+{
+    door_left
+    {
+        type triSurfaceMesh;
+        file "door_left.stl";
+        // Min Bounds = [ 7.88511e+00 -4.77901e+00  2.01337e+00]
+        // Max Bounds = [ 1.02092e+01 -4.77901e+00  6.99346e+00]
+        // Area = 1.14069e+01
+    }
+    door_right
+    {
+        type triSurfaceMesh;
+        file "door_right.stl";
+        // Min Bounds = [ 7.88511e+00  5.85451e+00  2.01337e+00]
+        // Max Bounds = [ 1.02092e+01  5.85451e+00  6.99346e+00]
+        // Area = 1.14069e+01
+    }
+    Door_wood_LEFT_left
+    {
+        type triSurfaceMesh;
+        file "Door_wood_LEFT_left.stl";
+        // Min Bounds = [ 7.69908e+00 -4.77901e+00  2.01337e+00]
+        // Max Bounds = [ 7.89908e+00 -3.62901e+00  6.99346e+00]
+        // Area = 1.39063e+01
+    }
+    Door_wood_LEFT_right
+    {
+        type triSurfaceMesh;
+        file "Door_wood_LEFT_right.stl";
+        // Min Bounds = [ 1.01760e+01 -4.79313e+00  2.01337e+00]
+        // Max Bounds = [ 1.03760e+01 -3.64313e+00  6.99346e+00]
+        // Area = 1.39062e+01
+    }
+    Door_wood_MAIN_left
+    {
+        type triSurfaceMesh;
+        file "Door_wood_MAIN_left.stl";
+        // Min Bounds = [ 1.18530e+01 -1.76239e+00  2.01337e+00]
+        // Max Bounds = [ 1.40360e+01 -1.56239e+00  9.83049e+00]
+        // Area = 3.81298e+01
+    }
+    Door_wood_MAIN_right
+    {
+        type triSurfaceMesh;
+        file "Door_wood_MAIN_right.stl";
+        // Min Bounds = [ 1.18530e+01  2.59392e+00  2.01337e+00]
+        // Max Bounds = [ 1.40360e+01  2.79392e+00  9.83049e+00]
+        // Area = 3.81298e+01
+    }
+    Door_wood_RIGHT_left
+    {
+        type triSurfaceMesh;
+        file "Door_wood_RIGHT_left.stl";
+        // Min Bounds = [ 1.01760e+01  4.70451e+00  2.01337e+00]
+        // Max Bounds = [ 1.03760e+01  5.85451e+00  6.99346e+00]
+        // Area = 1.39062e+01
+    }
+    Door_wood_RIGHT_right
+    {
+        type triSurfaceMesh;
+        file "Door_wood_RIGHT_right.stl";
+        // Min Bounds = [ 7.69908e+00  4.71863e+00  2.01337e+00]
+        // Max Bounds = [ 7.89908e+00  5.86863e+00  6.99346e+00]
+        // Area = 1.39063e+01
+    }
+    fire_inlet
+    {
+        type triSurfaceMesh;
+        file "fire_inlet.stl";
+        // Min Bounds = [ 4.50000e+00 -5.00000e-01  2.43489e+00]
+        // Max Bounds = [ 5.50000e+00  5.00000e-01  2.43489e+00]
+        // Area = 1.00000e+00
+    }
+    Hearth
+    {
+        type triSurfaceMesh;
+        file "Hearth.stl";
+        // Min Bounds = [ 4.50000e+00 -5.00000e-01  1.43489e+00]
+        // Max Bounds = [ 5.50000e+00  5.00000e-01  2.43489e+00]
+        // Area = 4.00000e+00
+    }
+    main_outlet
+    {
+        type triSurfaceMesh;
+        file "main_outlet.stl";
+        // Min Bounds = [ 2.36632e+01 -4.77901e+00  2.01337e+00]
+        // Max Bounds = [ 2.37690e+01  5.85451e+00  1.52639e+01]
+        // Area = 1.40904e+02
+    }
+    walls
+    {
+        type triSurfaceMesh;
+        file "walls.stl";
+        // Min Bounds = [-1.13907e+01 -4.77933e+00 -5.65742e-01]
+        // Max Bounds = [ 2.37690e+01  5.85451e+00  1.52639e+01]
+        // Area = 2.10009e+03
+    }
+}
+
+castellatedMeshControls
+{
+    maxLocalCells   100000;
+    maxGlobalCells  10000000;
+    minRefinementCells 10;
+    maxLoadUnbalance 0.1;
+    nCellsBetweenLevels 4;
+    locationInMesh (5.354814052581787 0.5 5.962192058563232);
+    allowFreeStandingZoneFaces true;
+    resolveFeatureAngle 30;
+    // useLeakClosure true; // OpenFOAM.com option
+    handleSnapProblems true;
+    useTopologicalSnapDetection true;
+
+    features
+    (
+        {
+            file "door_left.eMesh";
+            level 0;
+        }
+        {
+            file "door_right.eMesh";
+            level 0;
+        }
+        {
+            file "Door_wood_LEFT_left.eMesh";
+            level 0;
+        }
+        {
+            file "Door_wood_LEFT_right.eMesh";
+            level 0;
+        }
+        {
+            file "Door_wood_MAIN_left.eMesh";
+            level 0;
+        }
+        {
+            file "Door_wood_MAIN_right.eMesh";
+            level 0;
+        }
+        {
+            file "Door_wood_RIGHT_left.eMesh";
+            level 0;
+        }
+        {
+            file "Door_wood_RIGHT_right.eMesh";
+            level 0;
+        }
+        {
+            file "fire_inlet.eMesh";
+            level 0;
+        }
+        {
+            file "Hearth.eMesh";
+            level 0;
+        }
+        {
+            file "main_outlet.eMesh";
+            level 0;
+        }
+        {
+            file "walls.eMesh";
+            level 0;
+        }
+
+    );
+
+    refinementSurfaces
+    {
+        door_left
+        {
+            level (0 0);
+            patchInfo { type patch; }
+            addBufferLayers false;
+        }
+        door_right
+        {
+            level (0 0);
+            patchInfo { type patch; }
+            addBufferLayers false;
+        }
+        Door_wood_LEFT_left
+        {
+            level (0 0);
+            patchInfo { type wall; }
+            addBufferLayers false;
+        }
+        Door_wood_LEFT_right
+        {
+            level (0 0);
+            patchInfo { type wall; }
+            addBufferLayers false;
+        }
+        Door_wood_MAIN_left
+        {
+            level (0 0);
+            patchInfo { type wall; }
+            addBufferLayers false;
+        }
+        Door_wood_MAIN_right
+        {
+            level (0 0);
+            patchInfo { type wall; }
+            addBufferLayers false;
+        }
+        Door_wood_RIGHT_left
+        {
+            level (0 0);
+            patchInfo { type wall; }
+            addBufferLayers false;
+        }
+        Door_wood_RIGHT_right
+        {
+            level (0 0);
+            patchInfo { type wall; }
+            addBufferLayers false;
+        }
+        fire_inlet
+        {
+            level (0 0);
+            patchInfo { type patch; }
+            addBufferLayers false;
+        }
+        Hearth
+        {
+            level (0 0);
+            patchInfo { type wall; }
+            addBufferLayers false;
+        }
+        main_outlet
+        {
+            level (0 0);
+            patchInfo { type patch; }
+            addBufferLayers false;
+        }
+        walls
+        {
+            level (0 0);
+            patchInfo { type wall; }
+            addBufferLayers false;
+        }
+
+    }
+
+    refinementRegions
+    {
+
+    }
+}
+
+snapControls
+{
+    nSmoothPatch 2;
+    nSmoothInternal 1; // OpenFOAM.com option
+    tolerance 2.0;
+    nSolveIter 4;
+    nRelaxIter 5;
+    nFeatureSnapIter 3;
+    implicitFeatureSnap false;
+    explicitFeatureSnap true;
+    multiRegionFeatureSnap true;
+    nFaceSplitInterval -1; // OpenFOAM.com option
+    releasePoints false;  // multi-region related option
+    stringFeatures true;
+    avoidDiagonal false;
+    strictRegionSnap false;
+    concaveAngle 45;
+    minAreaRatio 0.3;
+
+    // OpenFOAM.com v2412 buffer layer smoothing
+    solver displacementPointSmoothing;
+    displacementPointSmoothingCoeffs
+    {
+        pointSmoother           laplacian;
+        nPointSmootherIter      10;
+    }
+
+}
+
+addLayersControls
+{
+    // Layer sizing
+    relativeSizes true;
+    expansionRatio 1.3;
+    finalLayerThickness 0.6;
+    minThickness 0.001;
+    nGrow 0;
+
+    // Mesh dependencies
+    featureAngle 85;
+    mergePatchFacesAngle 45; // OpenFOAM.com option
+    layerTerminationAngle 45; // OpenFOAM.com option
+    maxFaceThicknessRatio 0.5;
+    disableWallEdges false;
+
+    // Mesh displacement iterations
+    nSmoothSurfaceNormals 8;
+    nSmoothThickness 2;
+    nSmoothNormals 0;
+    nSmoothDisplacement 12;
+    nMedialAxisIter 1000;
+
+    // Medial axis analysis
+    minMedialAxisAngle 90;
+    maxThicknessToMedialRatio 0.5;
+    slipFeatureAngle 30;
+    nRelaxIter 10;
+
+    // OpenFOAM.com displacement motion solver
+    // meshShrinker displacementMotionSolver;
+    // solver displacementLaplacian;
+    // displacementLaplacianCoeffs { diffusivity quadratic inverseDistance ("wall.*"); }
+
+    // Mesh shrinking overall settings
+    nBufferCellsNoExtrude 0;
+    nLayerIter 8;
+    nRelaxedIter 0;
+    nOuterIter 1000; // OpenFOAM.com option, 1=single pass layer addition
+    additionalReporting true;
+
+    // OpenFOAM.com v2412 boundary layer smoothing
+    solver displacementPointSmoothing;
+    displacementPointSmoothingCoeffs
+    {
+        //pointSmoother           geometricElementTransform;
+        //transformationParameter 0.667;
+        //nPointSmootherIter      10;
+
+        pointSmoother           laplacian;
+        nPointSmootherIter      100;
+    }
+
+    layers
+    {
+
+    }
+}
+
+meshQualityControls
+{
+    nSmoothScale    4;
+    errorReduction  0.75;
+    #include "meshQualityDict"
+}
+
+writeFlags      ( scalarLevels layerSets layerFields );
+
+mergeTolerance  1e-06;

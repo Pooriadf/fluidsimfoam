@@ -1,0 +1,109 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2506                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      p;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [1 -1 -2 0 0 0 0];
+
+internalField   uniform 101325;
+
+boundaryField
+{
+    fire_inlet
+    {
+        type            calculated;
+        value           uniform 101325;
+    }
+
+    door_right
+    {
+        type            calculated;
+        value           uniform 101325;
+    }
+
+    door_left
+    {
+        type            calculated;
+        value           uniform 101325;
+    }
+
+    main_outlet
+    {
+        type            calculated;
+        value           uniform 101325;
+    }
+
+
+    Door_wood_LEFT_left
+    {
+        type            calculated;
+        value           uniform 101325;
+
+    }
+
+    Door_wood_LEFT_right
+    {
+        type            calculated;
+        value           uniform 101325;
+
+    }
+
+
+    Door_wood_MAIN_right
+    {
+        type            calculated;
+        value           uniform 101325;
+
+    }
+
+    Door_wood_MAIN_left
+    {
+        type            calculated;
+        value           uniform 101325;
+
+    }
+
+
+    Door_wood_RIGHT_left
+    {
+        type            calculated;
+        value           uniform 101325;
+    }
+
+
+    Door_wood_RIGHT_right
+    {
+        type            calculated;
+        value           uniform 101325;
+
+    }
+
+
+    Hearth
+    {
+        type            calculated;
+        value           uniform 101325;
+
+    }
+
+    walls
+    {
+        type            calculated;
+        value           uniform 101325;
+
+    }
+}
+
+
+// ************************************************************************* //

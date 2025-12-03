@@ -1,0 +1,51 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+
+// Exported by SnappyHexMesh GUI add-on for Blender v1.8
+// Source file: F:\Pooria\Combustion\Simulation\Geometry\for_openfoam\24nov\allparts_surfaces.blend
+// Export date: 2025-11-24 14:17:36.053456
+
+scale 1;
+
+vertices
+(
+    ( -12 -5.5 -1 )
+    ( 24.5 -5.5 -1 )
+    ( 24.5 6.5 -1 )
+    ( -12 6.5 -1 )
+    ( -12 -5.5 16 )
+    ( 24.5 -5.5 16 ) 
+    ( 24.5 6.5 16 ) 
+    ( -12 6.5 16 ) 
+);
+
+blocks
+(
+    hex (0 1 2 3 4 5 6 7) (150 75 75) simpleGrading (1 1 1)
+);
+
+edges
+(
+);
+
+boundary
+(
+    world
+    {
+        type patch;
+        faces
+        (
+            (3 7 6 2)
+            (0 4 7 3)
+            (2 6 5 1)
+            (1 5 4 0)
+            (0 3 2 1)
+            (4 5 6 7)
+        );
+    }
+);

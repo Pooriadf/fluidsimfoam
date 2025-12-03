@@ -1,0 +1,2 @@
+[fluidsimfoam.solvers]
+firefoam = fluidsimfoam_firefoam

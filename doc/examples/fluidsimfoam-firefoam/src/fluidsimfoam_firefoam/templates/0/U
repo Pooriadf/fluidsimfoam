@@ -1,0 +1,94 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2506                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    fire_inlet
+    {
+        type            fixedValue;
+        value           uniform (0 0 1);
+    }
+
+    door_right
+    {
+        type            pressureInletOutletVelocity;
+        value           uniform (0 0 0);
+    }
+
+    door_left
+    {
+        type            pressureInletOutletVelocity;
+        value           uniform (0 0 0);
+    }
+
+    main_outlet
+    {
+        type            pressureInletOutletVelocity;
+        value           uniform (0 0 0);
+    }
+
+
+    Door_wood_LEFT_left
+    {
+        type            noSlip;
+    }
+
+    Door_wood_LEFT_right
+    {
+        type            noSlip;
+    }
+
+
+    Door_wood_MAIN_right
+    {
+        type            noSlip;
+    }
+
+    Door_wood_MAIN_left
+    {
+        type            noSlip;
+    }
+
+
+    Door_wood_RIGHT_left
+    {
+        type            noSlip;
+    }
+
+
+    Door_wood_RIGHT_right
+    {
+        type            noSlip;
+    }
+
+
+    Hearth
+    {
+        type            noSlip;
+    }
+
+    walls
+    {
+        type            noSlip;
+    }
+}
+
+
+// ************************************************************************* //

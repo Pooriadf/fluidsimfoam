@@ -1,0 +1,95 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2506                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      radiationProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+radiation       on;
+
+// Change radiation model to P1
+radiationModel  P1;
+
+// Frequency of coupling with the flow solvers
+solverFreq 10;
+
+// Absorption & emission (grey gas)
+absorptionEmissionModel greyMeanAbsorptionEmission;
+
+greyMeanAbsorptionEmissionCoeffs
+{
+    EhrrCoeff 0.15;
+
+    CO2
+    {
+        Tcommon 200;
+        invTemp true;
+        Tlow    200;
+        Thigh   2500;
+
+        loTcoeffs (0 0 0 0 0 0);
+        hiTcoeffs (18.741 -121.31e3 273.5e6 -194.05e9 56.31e12 -5.8169e15);
+    }
+
+    H2O
+    {
+        Tcommon 200;
+        invTemp true;
+        Tlow    200;
+        Thigh   2500;
+
+        loTcoeffs (0 0 0 0 0 0);
+        hiTcoeffs (-0.23093 -1.12390e3 9.4153e6 -2.99885e9 0.51382e12 -1.868e10);
+    }
+
+    C7H16
+    {
+        Tcommon 200;
+        invTemp false;
+        Tlow    200;
+        Thigh   2500;
+
+        loTcoeffs (0 0 0 0 0 0);
+        hiTcoeffs (6.6334 -0.0035686 1.6682e-8 2.5611e-10 -2.6558e-14 0);
+    }
+
+    O2
+    {
+        Tcommon 200;
+        invTemp true;
+        Tlow    200;
+        Thigh   2500;
+
+        loTcoeffs (0 0 0 0 0 0);
+        hiTcoeffs (0.01 0 0 0 0 0);
+    }
+
+    N2
+    {
+        Tcommon 200;
+        invTemp true;
+        Tlow    200;
+        Thigh   2500;
+
+        loTcoeffs (0 0 0 0 0 0);
+        hiTcoeffs (0.01 0 0 0 0 0);
+    }
+}
+
+// No scattering
+scatterModel none;
+
+// No soot for now
+sootModel none;
+
+
+// ************************************************************************* //

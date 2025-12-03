@@ -1,0 +1,76 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2506                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    arch        "LSB;label=32;scalar=64";
+    class       pointScalarField;
+    location    "0";
+    object      pointLevel;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 0 0 0 0];
+
+internalField   uniform 0;
+
+boundaryField
+{
+    door_left
+    {
+        type            calculated;
+    }
+    door_right
+    {
+        type            calculated;
+    }
+    Door_wood_LEFT_left
+    {
+        type            calculated;
+    }
+    Door_wood_LEFT_right
+    {
+        type            calculated;
+    }
+    Door_wood_MAIN_left
+    {
+        type            calculated;
+    }
+    Door_wood_MAIN_right
+    {
+        type            calculated;
+    }
+    Door_wood_RIGHT_left
+    {
+        type            calculated;
+    }
+    Door_wood_RIGHT_right
+    {
+        type            calculated;
+    }
+    fire_inlet
+    {
+        type            calculated;
+    }
+    Hearth
+    {
+        type            calculated;
+    }
+    main_outlet
+    {
+        type            calculated;
+    }
+    walls
+    {
+        type            calculated;
+    }
+}
+
+
+// ************************************************************************* //

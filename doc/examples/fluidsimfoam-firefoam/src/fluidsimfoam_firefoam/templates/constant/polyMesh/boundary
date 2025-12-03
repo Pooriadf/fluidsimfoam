@@ -1,0 +1,103 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2506                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    arch        "LSB;label=32;scalar=64";
+    class       polyBoundaryMesh;
+    location    "constant/polyMesh";
+    object      boundary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+12
+(
+    door_left
+    {
+        type            patch;
+        nFaces          198;
+        startFace       1681976;
+    }
+    door_right
+    {
+        type            patch;
+        nFaces          198;
+        startFace       1682174;
+    }
+    Door_wood_LEFT_left
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          344;
+        startFace       1682372;
+    }
+    Door_wood_LEFT_right
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          344;
+        startFace       1682716;
+    }
+    Door_wood_MAIN_left
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          736;
+        startFace       1683060;
+    }
+    Door_wood_MAIN_right
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          689;
+        startFace       1683796;
+    }
+    Door_wood_RIGHT_left
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          344;
+        startFace       1684485;
+    }
+    Door_wood_RIGHT_right
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          344;
+        startFace       1684829;
+    }
+    fire_inlet
+    {
+        type            patch;
+        nFaces          24;
+        startFace       1685173;
+    }
+    Hearth
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          92;
+        startFace       1685197;
+    }
+    main_outlet
+    {
+        type            patch;
+        nFaces          3894;
+        startFace       1685289;
+    }
+    walls
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          46927;
+        startFace       1689183;
+    }
+)
+
+// ************************************************************************* //

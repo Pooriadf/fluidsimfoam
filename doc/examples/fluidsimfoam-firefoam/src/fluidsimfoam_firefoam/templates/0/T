@@ -1,0 +1,99 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2506                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      T;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 1 0 0 0];
+
+internalField   uniform 294.75;
+
+boundaryField
+{
+    fire_inlet
+    {
+        type            fixedValue;
+        value           uniform 371.15;
+    }
+
+    door_right
+    {
+        type            inletOutlet;
+        inletValue      uniform 294.75;
+        value           uniform 294.75;
+    }
+    door_left
+    {
+        type            inletOutlet;
+        inletValue      uniform 294.75;
+        value           uniform 294.75;
+    }
+
+
+    main_outlet
+    {
+        type            inletOutlet;
+        inletValue      uniform 294.75;
+        value           uniform 294.75;
+    }
+
+
+    Door_wood_LEFT_left
+    {
+        type            zeroGradient;
+    }
+
+    Door_wood_LEFT_right
+    {
+        type            zeroGradient;
+    }
+
+
+    Door_wood_MAIN_right
+    {
+        type            zeroGradient;
+    }
+
+    Door_wood_MAIN_left
+    {
+        type            zeroGradient;
+    }
+
+
+    Door_wood_RIGHT_left
+    {
+        type            zeroGradient;
+    }
+
+
+    Door_wood_RIGHT_right
+    {
+        type            zeroGradient;
+    }
+
+
+    Hearth
+    {
+        type            zeroGradient;
+    }
+
+    walls
+    {
+        type            zeroGradient;
+    }
+
+
+}
+
+
+// ************************************************************************* //

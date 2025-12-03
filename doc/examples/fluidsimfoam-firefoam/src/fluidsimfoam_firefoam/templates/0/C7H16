@@ -1,0 +1,100 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2506                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      C7H16;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 0 0 0 0];
+
+internalField   uniform 0;
+
+boundaryField
+{
+    fire_inlet
+    {
+        type            totalFlowRateAdvectiveDiffusive;
+        phi             phi;
+        rho             rho;
+        massFluxFraction 1;
+        value           uniform 1;
+    }
+
+    door_right
+    {
+        type            inletOutlet;
+        inletValue      uniform 0;
+        value           uniform 0;
+    }
+    door_left
+    {
+        type            inletOutlet;
+        inletValue      uniform 0;
+        value           uniform 0;
+    }
+
+
+    main_outlet
+    {
+        type            inletOutlet;
+        inletValue      uniform 0;
+        value           uniform 0;
+    }
+
+
+    Door_wood_LEFT_left
+    {
+        type            zeroGradient;
+    }
+
+    Door_wood_LEFT_right
+    {
+        type            zeroGradient;
+    }
+
+
+    Door_wood_MAIN_right
+    {
+        type            zeroGradient;
+    }
+
+    Door_wood_MAIN_left
+    {
+        type            zeroGradient;
+    }
+
+
+    Door_wood_RIGHT_left
+    {
+        type            zeroGradient;
+    }
+
+
+    Door_wood_RIGHT_right
+    {
+        type            zeroGradient;
+    }
+
+
+    Hearth
+    {
+        type            zeroGradient;
+    }
+
+    walls
+    {
+        type            zeroGradient;
+    }
+}
+
+
+// ************************************************************************* //
